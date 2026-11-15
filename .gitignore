@@ -1,0 +1,16 @@
+
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+.pytest_cache/
+课程输出/
+输出文件/
+outputs/
+generated/
+*.pyc
+*.pyo
+*.pth
+*.npz
+.DS_Store
+Thumbs.db
+

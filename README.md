@@ -2,9 +2,9 @@
 
 本手册源自北京交通大学在中国大学 MOOC 开设的《人工智能与交通大数据实战》。感谢张金雷老师及课程团队提供原课程讲解、课件与教学案例。Shiqi Li 完成手册整理和后续开发。
 
-[原课程](https://www.icourse163.org/course/NJTU-1471607173) · [张金雷的 GitHub](https://github.com/JinleiZhangBJTU) · [Shiqi Li 的 GitHub](https://github.com/Richardlsq)
+**[在线阅读手册](https://richardlsq.github.io/traffic-ai-handbook/)** · **[下载完整课程 ZIP](https://github.com/Richardlsq/traffic-ai-handbook/releases/latest/download/traffic-ai-handbook.zip)**
 
-**[下载完整课程 ZIP](https://github.com/Richardlsq/traffic-ai-handbook/releases/download/v1.0.0/traffic-ai-handbook.zip)** · [发布页](https://github.com/Richardlsq/traffic-ai-handbook/releases/tag/v1.0.0)
+[原课程](https://www.icourse163.org/course/NJTU-1471607173) · [张金雷的 GitHub](https://github.com/JinleiZhangBJTU) · [Shiqi Li 的 GitHub](https://github.com/Richardlsq)
 
 打开 [课程代码手册](人工智能与交通大数据实战-课程代码手册.html) 即可离线浏览。整包包含 Python 基础、PyTorch 基础、反向传播、循环神经网络、卷积神经网络、图卷积神经网络和轨道交通案例。
 
@@ -21,6 +21,8 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\课程初始化.ps1 -S
 检查通过时输出 `PASS`。验收产物按运行时间保存在 `课程输出/快速验收/`。只安装环境时可以省略 `-SmokeTest`。
 
 ## 运行教学示例
+
+整包里的 `解压代码/` 是整理并验证过的教学代码，包含 LSTM 测试与 MSE 计算、深圳路速与地铁客流模型验证流程的修正。
 
 各章的原理与可复制演示可直接在 Notebook 单元格运行。每个演示旁列出预期结果、配套源码及相关课件页码。
 

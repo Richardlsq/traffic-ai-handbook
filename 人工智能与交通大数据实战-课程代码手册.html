@@ -49,6 +49,8 @@ h4 { font-size: 1rem; }
   padding: .35rem .72rem; text-decoration: none; line-height: 1.5;
 }
 .button:hover { border-color: var(--teal); color: var(--teal-strong); background: var(--light); }
+.top-actions .download-zip { white-space: nowrap; color: white; background: var(--dark); border-color: var(--dark); font-weight: 710; }
+.top-actions .download-zip:hover { background: var(--teal-strong); border-color: var(--teal-strong); }
 .search-icon { border: 1.5px solid currentColor; width: .65em; height: .65em; display: inline-block; border-radius: 50%; position: relative; margin-right: .15em; }
 .search-icon::after { content: ""; position: absolute; height: 1.5px; width: .35em; background: currentColor; right: -.28em; bottom: -.13em; transform: rotate(45deg); }
 kbd { font: 500 .75rem "IBM Plex Mono", Consolas, monospace; color: var(--muted); padding: .16rem .35rem; background: var(--page); border: 1px solid var(--line); border-radius: 4px; }
@@ -189,6 +191,10 @@ pre code { white-space: inherit; font-size: .84rem; line-height: 1.55; tab-size:
   .cards { gap: 10px; }
 }
 @media (max-width: 540px) {
+  .brand .mark, .top-actions .search-icon { display: none; }
+  .brand { font-size: .88rem; }
+  .top-actions { gap: .32rem; }
+  .top-actions .button { font-size: .81rem; padding-inline: .45rem; white-space: nowrap; }
   .cards { grid-template-columns: minmax(0,1fr); }
   .stat { flex-direction: column; align-items: center; justify-content: start; padding: .5rem .32rem; }
   .stat span { text-align: center; font-size: .74rem; }
@@ -233,6 +239,7 @@ pre code { white-space: inherit; font-size: .84rem; line-height: 1.55; tab-size:
 <div class="top-actions">
 <button aria-controls="sidebar" aria-expanded="false" class="button menu-toggle" id="menu-toggle" type="button">目录</button>
 <a class="button" href="#source" id="find-source"><span aria-hidden="true" class="search-icon"></span>查找源码 <kbd aria-hidden="true">Ctrl K</kbd></a>
+<a class="button download-zip" href="https://github.com/Richardlsq/traffic-ai-handbook/releases/latest/download/traffic-ai-handbook.zip" aria-label="下载 ZIP（完整课程手册）">下载 ZIP</a>
 </div>
 </div>
 </header>

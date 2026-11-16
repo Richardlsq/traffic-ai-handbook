@@ -4,8 +4,9 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="人工智能与交通大数据实战课程代码手册，包含完整示例源码、运行指南和课程实验。" name="description"/>
-<title>人工智能与交通大数据实战 · 课程代码手册</title>
+<meta content="北京交通大学《人工智能与交通大数据实战》课程手册。按课件学习 Python、反向传播、RNN、CNN、GCN 和地铁客流预测，并配套 PyTorch 练习。" name="description"/>
+<title>人工智能与交通大数据实战 · 课程手册 · PyTorch 版</title>
+<link rel="icon" href="data:,"/>
 <style>
 :root {
   color-scheme: light;
@@ -89,11 +90,6 @@ main { min-width: 0; }
 .hero-flow li + li { border-top: 1px solid #426658; }
 .flow-dot { display: block; align-self: center; width: .6rem; height: .6rem; border: 2px solid #a1d6b1; margin-left: 3px; border-radius: 2px; }
 .hero-flow strong { display: block; color: #f8fff9; font-size: .86rem; margin-bottom: .1rem; }
-.stats-strip { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); border-radius: 12px; background: var(--paper); margin-top: 14px; }
-.stat { padding: .7rem .95rem; display: flex; flex-wrap: wrap; gap: .2rem .6rem; align-items: baseline; justify-content: center; }
-.stat + .stat { border-left: 1px solid var(--line); }
-.stat strong { font: 700 clamp(1.12rem,2vw,1.45rem) "IBM Plex Mono", Consolas, monospace; color: var(--teal-strong); }
-.stat span { color: var(--muted); font-size: .82rem; }
 .section { margin-top: clamp(38px, 6.5vw, 77px); }
 .section-title { display: flex; align-items: baseline; gap: .75rem; margin: 0 0 .7rem; }
 .chapter-num { font: 660 .85rem "IBM Plex Mono",Consolas,monospace; color: var(--teal-strong); border: 1px solid #c6dacb; background: #eaf3e9; border-radius: 6px; padding: .3rem .49rem; white-space: nowrap; }
@@ -196,8 +192,6 @@ pre code { white-space: inherit; font-size: .84rem; line-height: 1.55; tab-size:
   .top-actions { gap: .32rem; }
   .top-actions .button { font-size: .81rem; padding-inline: .45rem; white-space: nowrap; }
   .cards { grid-template-columns: minmax(0,1fr); }
-  .stat { flex-direction: column; align-items: center; justify-content: start; padding: .5rem .32rem; }
-  .stat span { text-align: center; font-size: .74rem; }
   .hero .overline { letter-spacing: .09em; }
   .section-title { gap: .52rem; }
   th,td { padding: .46rem .55rem; }
@@ -229,13 +223,49 @@ pre code { white-space: inherit; font-size: .84rem; line-height: 1.55; tab-size:
   .teaching th[scope="row"] { overflow-wrap: anywhere; }
   #teach-metro-target th[scope="row"] { min-width: 4.2em; }
 }
+
+.lesson p, .lesson li { max-width: 57rem; }
+.lesson .equation {
+  padding: .7rem .9rem;
+  border-left: 3px solid var(--teal);
+  background: var(--light);
+  border-radius: 0 .6rem .6rem 0;
+  overflow-wrap: anywhere;
+}
+.lesson-figure { margin: 1rem 0; }
+.lesson-figure .steps { margin: 0; }
+.lesson-figure .steps > span { max-width: 100%; }
+.lesson .cards .card { background: #f8faf7; }
+.lesson .cards h4 { margin-top: 0; }
+.question { margin: 1rem 0; padding: .65rem .9rem; border: 1px solid var(--line); border-radius: .6rem; background: #f6f9f4; }
+.question > summary { cursor: pointer; color: var(--teal-strong); font-weight: 650; }
+.question[open] > summary { margin-bottom: .65rem; }
+.question > p:last-child { margin-bottom: 0; }
+.lab-panel { margin: 1rem 0; }
+.lab-panel > summary { color: var(--teal-strong); }
+.lab-panel[open] > summary { padding-bottom: .72rem; border-bottom: 1px solid var(--line); }
+.lab-body { padding-top: .8rem; }
+.matrix-flow { display: flex; flex-wrap: wrap; align-items: center; gap: .85rem; margin: 1rem 0; }
+.matrix { width: auto; text-align: center; font-variant-numeric: tabular-nums; }
+.matrix caption { color: var(--muted); white-space: nowrap; font-size: .84rem; margin-bottom: .35rem; }
+.matrix td, .matrix tbody tr:last-of-type td { border: 1px solid var(--line); min-width: 1.85rem; padding: .3rem .35rem; }
+.matrix .window-active { background: #e1f0e2; box-shadow: inset 0 0 0 1px #679973; font-weight: 720; }
+.matrix td:has(button) { padding: 0; }
+.matrix button { border: 0; background: #f8faf7; color: var(--teal-strong); padding: .3rem .46rem; min-width: 2.65rem; }
+.matrix button[aria-pressed="true"] { background: var(--teal-strong); color: white; font-weight: 700; }
+.math-operator { color: var(--muted); font-size: 1.15rem; }
+@media (max-width: 430px) {
+  .matrix-flow { gap: .5rem; }
+  .matrix-flow > .math-operator { display: none; }
+  .matrix td, .matrix tbody tr:last-of-type td { min-width: 1.6rem; }
+}
 </style>
 </head>
 <body>
 <a class="skip" href="#main">跳到正文</a>
 <header class="top">
 <div class="top-inner">
-<a class="brand" href="#overview"><span aria-hidden="true" class="mark">&lt;/&gt;</span>课程代码手册</a>
+<a class="brand" href="#overview"><span aria-hidden="true" class="mark">课</span>课程手册</a>
 <div class="top-actions">
 <button aria-controls="sidebar" aria-expanded="false" class="button menu-toggle" id="menu-toggle" type="button">目录</button>
 <a class="button" href="#source" id="find-source"><span aria-hidden="true" class="search-icon"></span>查找源码 <kbd aria-hidden="true">Ctrl K</kbd></a>
@@ -248,16 +278,16 @@ pre code { white-space: inherit; font-size: .84rem; line-height: 1.55; tab-size:
 <h2>手册目录</h2>
 <nav aria-label="章节">
 <a href="#overview">课程概览</a>
-<a href="#start">环境与运行入口</a>
-<hr class="nav-divider"/>
 <a href="#python"><span class="navnum">1.x</span>Python 基础知识</a>
-<a href="#pytorch"><span class="navnum">2.x</span>PyTorch 基础知识</a>
+<a href="#pytorch"><span class="navnum">2.x</span>深度学习基础</a>
 <a href="#bp"><span class="navnum">3.1</span>反向传播</a>
 <a href="#rnn"><span class="navnum">3.2</span>循环神经网络</a>
 <a href="#cnn"><span class="navnum">3.3</span>卷积神经网络</a>
 <a href="#gcn"><span class="navnum">3.4</span>图卷积神经网络</a>
 <a href="#metro"><span class="navnum">案例</span>地铁客流预测</a>
 <hr class="nav-divider"/>
+<a href="#course-slides">课程课件与页码</a>
+<a href="#start">环境与运行入口</a>
 <a href="#evaluation">指标与故障排查</a>
 <a href="#data">数据与产物索引</a>
 <a href="#source">完整源码</a>
@@ -266,73 +296,68 @@ pre code { white-space: inherit; font-size: .84rem; line-height: 1.55; tab-size:
 <main id="main" tabindex="-1">
 <section aria-labelledby="title" class="hero" id="overview">
 <div class="hero-copy">
-<h1 id="title">人工智能与<br/>交通大数据实战<span>课程代码手册</span></h1>
-<p>从 Python 数据操作到全网地铁客流预测。按章节查看数据、张量形状、运行命令和实测输出，也可直接检索完整源码。</p>
+<h1 id="title">人工智能与<br/>交通大数据实战<span>课程手册 · PyTorch 版</span></h1>
+<p>跟随张金雷老师的课程课件，从一条客流记录学到全网预测。先读图、手算与自测，再运行各章的配套实验。</p>
 <div class="hero-buttons">
-<a class="button" href="#start">开始运行</a>
-<a class="button secondary" href="#source">浏览源码</a>
+<a class="button" href="#python">从第一章开始</a>
+<a class="button secondary" href="#course-slides">查课件页码</a>
 <a class="button secondary" href="https://github.com/Richardlsq/traffic-ai-handbook/releases/latest/download/traffic-ai-handbook.zip">下载完整课程手册 ZIP</a>
+<a class="button secondary" href="https://richardlsq.github.io/traffic-ai-handbook-tensorflow/">切换到 TensorFlow 版</a>
 </div>
 </div>
 <div class="hero-flow">
-<h2>交通预测项目流程</h2>
+<h2>学习路线</h2>
 <ol>
-<li><span aria-hidden="true" class="flow-dot"></span><span><strong>数据与窗口</strong>按时间切分，训练段拟合归一化</span></li>
-<li><span aria-hidden="true" class="flow-dot"></span><span><strong>模型训练</strong>邻接聚合，历史特征回归</span></li>
-<li><span aria-hidden="true" class="flow-dot"></span><span><strong>独立验证</strong>比较验证 MSE，保存最佳权重</span></li>
-<li><span aria-hidden="true" class="flow-dot"></span><span><strong>测试与诊断</strong>还原原始量纲，按站点和时段拆解</span></li>
+<li><span aria-hidden="true" class="flow-dot"></span><span><strong>数据与表示</strong>Python 表格、矩阵和张量</span></li>
+<li><span aria-hidden="true" class="flow-dot"></span><span><strong>理解模型</strong>梯度、循环、卷积和图传播</span></li>
+<li><span aria-hidden="true" class="flow-dot"></span><span><strong>解决交通问题</strong>刷卡数据、时空特征与客流</span></li>
+<li><span aria-hidden="true" class="flow-dot"></span><span><strong>动手实验</strong>校验例题、训练预测、拆解误差</span></li>
 </ol>
 </div>
 </section>
-<div aria-label="手册覆盖范围" class="stats-strip">
-<div class="stat"><strong>7</strong><span>课程单元</span></div>
-<div class="stat"><strong>15</strong><span>Notebook</span></div>
-<div class="stat"><strong>32</strong><span>Python 源文件</span></div>
-</div>
-<section aria-labelledby="start-title" class="section" id="start">
-<div class="section-title"><h2 id="start-title">环境与运行入口</h2></div>
-<p class="lead">在解压后的课程目录打开 PowerShell。建议按 <a href="#python">Python 基础</a>、<a href="#pytorch">PyTorch 基础</a>、<a href="#bp">人工智能基础</a> 和 <a href="#metro">地铁案例</a> 的顺序学习。</p>
-<div class="cards">
-<article class="card"><h3>已有环境</h3><p>先激活想用的 Python 或 Conda 环境，再检查全部核心包和 CPU 卷积。看到 <code>PASS env</code> 后即可运行课程；第一行同时打印解释器路径。</p></article>
-<article class="card"><h3>新机器 · Windows x64</h3><p>先装 Python 3.14，确认 <code>py -3.14 -V</code> 可运行。新建隔离环境，安装固定版本的依赖和匹配的 CPU 版 PyTorch 与 torchvision。安装需要联网。</p></article>
-</div>
-<div class="note">
-<p>整包解压后，源码、课程工具和输入数据已放在对应目录。Windows 可运行 <code>课程初始化.ps1</code> 准备 CPU 环境，或下载 <button class="button" data-download="requirements" type="button">课程依赖清单</button> 手动配置。用 <a href="#data">数据与产物索引</a> 查找输入文件。</p>
-<p>各章的 Python、NumPy 或 PyTorch 演示可复制到新 Notebook 单元格执行。代码开头会标明需要的数据文件和运行目录。</p></div>
-<div class="stack">
-<div class="snippet"><div class="snippet-head"><span>PowerShell · 已有环境</span><button class="copy" data-copy="" type="button">复制</button></div><pre aria-label="PowerShell · 已有环境" tabindex="0"><code><span class="nv">$CoursePython</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-Command</span> <span class="n">python</span> <span class="n">-CommandType</span> <span class="n">Application</span> <span class="n">-ErrorAction</span> <span class="n">Stop</span><span class="p">)</span><span class="p">.</span><span class="n">Source</span>
-<span class="p">&amp;</span> <span class="nv">$CoursePython</span> <span class="n">-B</span> <span class="n">-X</span> <span class="n">utf8</span> <span class="s1">'课程工具/快速验收.py'</span> <span class="n">env</span>
-<span class="k">if</span> <span class="p">(</span><span class="nv">$LASTEXITCODE</span> <span class="o">-ne</span> <span class="n">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">throw</span> <span class="s2">"</span><span class="s2">环境检查失败，退出码 </span><span class="s2">$</span><span class="s2">LASTEXITCODE</span><span class="s2">"</span> <span class="p">}</span></code></pre></div>
-<div class="card history"><details><summary>新机器安装命令</summary>
-<div class="snippet"><div class="snippet-head"><span>PowerShell · 新环境 CPU 安装</span><button class="copy" data-copy="" type="button">复制</button></div><pre aria-label="PowerShell · 新环境 CPU 安装" tabindex="0"><code><span class="n">powershell</span><span class="p">.</span><span class="n">exe</span> <span class="n">-NoProfile</span> <span class="n">-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="o">-File</span> <span class="p">.\</span><span class="n">课程初始化</span><span class="p">.</span><span class="n">ps1</span>
-<span class="k">if</span> <span class="p">(</span><span class="nv">$LASTEXITCODE</span> <span class="o">-ne</span> <span class="n">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">throw</span> <span class="s1">'课程初始化失败'</span> <span class="p">}</span>
-<span class="nv">$CoursePython</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Resolve-Path</span> <span class="n">-LiteralPath</span> <span class="s1">'.venv/Scripts/python.exe'</span><span class="p">).</span><span class="n">Path</span></code></pre></div>
-<p>在 JupyterLab 的 <strong>Kernel → Change Kernel</strong> 中选择 <strong>Python (Traffic AI)</strong>。已有环境直接用该解释器启动 JupyterLab，再选择指向同一解释器的内核。可在首格运行 <code>import sys; print(sys.executable)</code> 核对路径。</p>
-<p>使用 NVIDIA GPU 时，可在独立环境中把 PyTorch 下载索引换成与本机驱动匹配的官方 CUDA 索引。TensorBoard 和 Plotly 分别用于 <code>--tensorboard</code> 和 <code>--plot</code>，属于可选依赖。</p>
-<div class="links"> <a href="https://docs.python.org/3/library/venv.html">Python 虚拟环境</a> <a href="https://pytorch.org/get-started/previous-versions/">PyTorch CPU／CUDA 安装来源</a> <a href="https://ipython.readthedocs.io/en/stable/install/kernel_install.html">Jupyter 内核注册</a></div>
-</details></div>
-</div>
-<h3>Notebook 的确切工作目录</h3>
-<p>在下方找到要运行的 Notebook 文件路径。打开课程目录中的 PowerShell，把示例中的路径换成对应条目。启动 JupyterLab 后选择 <strong>Restart Kernel and Run All Cells</strong>。示例环境使用 Python 3.14.4。</p>
-<div class="snippet"><div class="snippet-head"><span>PowerShell · 在选定 notebook 的父目录启动 JupyterLab</span><button class="copy" data-copy="" type="button">复制</button></div><pre aria-label="PowerShell · 在选定 notebook 的父目录启动 JupyterLab" tabindex="0"><code><span class="nv">$notebook</span> <span class="p">=</span> <span class="s1">'解压代码/Python基础知识代码/Python代码/Python1.3-1.4/Python1.3-1.4.ipynb'</span>
-<span class="nb">Push-Location</span> <span class="n">-LiteralPath</span> <span class="p">(</span><span class="nb">Split-Path</span> <span class="n">-Parent</span> <span class="nv">$notebook</span><span class="p">)</span> <span class="n">-ErrorAction</span> <span class="n">Stop</span>
-<span class="k">try</span> <span class="p">{</span>
-    <span class="p">&amp;</span> <span class="nv">$CoursePython</span> <span class="n">-m</span> <span class="n">jupyterlab</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$LASTEXITCODE</span> <span class="o">-ne</span> <span class="n">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">throw</span> <span class="s2">"</span><span class="s2">JupyterLab 启动失败，退出码 </span><span class="s2">$</span><span class="s2">LASTEXITCODE</span><span class="s2">"</span> <span class="p">}</span>
-<span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
-    <span class="nb">Pop-Location</span>
-<span class="p">}</span></code></pre></div>
-<div class="card history"><details><summary>展开所有 Notebook 的路径</summary><div aria-label="Notebook 工作目录" class="tablebox" role="region" tabindex="0"><table><thead><tr><th>Notebook</th><th>课程根目录下的文件路径</th></tr></thead><tbody><tr><th scope="row">Python 1.1–1.2 · 数据类型与语句</th><td class="path"><code>解压代码/Python基础知识代码/Python代码/Python1.1-1.2.ipynb</code><br/><a href="#src-py-control">查看和下载代码</a></td></tr><tr><th scope="row">Python 1.3–1.4 · 函数、类与文件读写</th><td class="path"><code>解压代码/Python基础知识代码/Python代码/Python1.3-1.4/Python1.3-1.4.ipynb</code><br/><a href="#src-py-io">查看和下载代码</a></td></tr><tr><th scope="row">Python 1.5 · NumPy</th><td class="path"><code>解压代码/Python基础知识代码/Python代码/Python1.5-Numpy.ipynb</code><br/><a href="#src-py-numpy">查看和下载代码</a></td></tr><tr><th scope="row">Python 1.6 · Pandas</th><td class="path"><code>解压代码/Python基础知识代码/Python代码/Python1.6-Pandas/Pandas.ipynb</code><br/><a href="#src-py-pandas">查看和下载代码</a></td></tr><tr><th scope="row">Python 1.7 · SciPy</th><td class="path"><code>解压代码/Python基础知识代码/Python代码/Python1.7-SciPy.ipynb</code><br/><a href="#src-py-scipy">查看和下载代码</a></td></tr><tr><th scope="row">Python 1.8–1.9 · scikit-learn 与 Matplotlib</th><td class="path"><code>解压代码/Python基础知识代码/Python代码/python1.8-1.9/1.8-1.9.ipynb</code><br/><a href="#src-py-ml">查看和下载代码</a></td></tr><tr><th scope="row">PyTorch 2.1 · 张量</th><td class="path"><code>解压代码/PyTorch基础知识代码/PyTorch代码/Pytorch2.1张量介绍.ipynb</code><br/><a href="#src-torch-tensor">查看和下载代码</a></td></tr><tr><th scope="row">PyTorch 2.2 · Dataset 与 DataLoader</th><td class="path"><code>解压代码/PyTorch基础知识代码/PyTorch代码/pytorch2.2数据模块.ipynb</code><br/><a href="#src-torch-data">查看和下载代码</a></td></tr><tr><th scope="row">PyTorch 2.3 · 网络模块</th><td class="path"><code>解压代码/PyTorch基础知识代码/PyTorch代码/Pytorch2.3模型介绍.ipynb</code><br/><a href="#src-torch-model">查看和下载代码</a></td></tr><tr><th scope="row">PyTorch 2.4 · 激活函数</th><td class="path"><code>解压代码/PyTorch基础知识代码/PyTorch代码/pytorch2.4激活函数.ipynb</code><br/><a href="#src-torch-activation">查看和下载代码</a></td></tr><tr><th scope="row">反向传播算法</th><td class="path"><code>解压代码/人工智能基础1--反向传播算法代码/人工智能基础3.1反向传播算法.ipynb</code><br/><a href="#src-bp">查看和下载代码</a></td></tr><tr><th scope="row">练习 · 对数几率回归</th><td class="path"><code>解压代码/人工智能基础1--反向传播算法代码/对数几率回归练习.ipynb</code><br/><a href="#src-exercise">查看和下载代码</a></td></tr><tr><th scope="row">循环神经网络 LSTM</th><td class="path"><code>解压代码/人工智能基础2--循环神经网络代码/人工智能基础3.2循环神经网络.ipynb</code><br/><a href="#src-rnn">查看和下载代码</a></td></tr><tr><th scope="row">卷积神经网络 CNN</th><td class="path"><code>解压代码/人工智能基础3--卷积神经网络代码/人工智能基础3.3+卷积神经网络/CNN/CNN.ipynb</code><br/><a href="#src-cnn">查看和下载代码</a></td></tr><tr><th scope="row">NumPy 图卷积</th><td class="path"><code>解压代码/人工智能基础4--图卷积神经网络代码/人工智能基础3.4-图卷积神经网络.ipynb</code><br/><a href="#src-toy">查看和下载代码</a></td></tr></tbody></table></div></details></div>
-<h3 style="margin-top:1.25rem">先做一次快速验收</h3>
-<p>各章的快速验收在 CPU 上执行必要单元格或小批次。路速和地铁各用一轮训练生成权重，再检查预测输出。快速验收用于检查流程、数据和张量形状；完整训练的配置与示例结果见各章。</p>
-<div class="snippet"><div class="snippet-head"><span>PowerShell · 运行全部快速检查</span><button class="copy" data-copy="" type="button">复制</button></div><pre aria-label="PowerShell · 运行全部快速检查" tabindex="0"><code><span class="p">&amp;</span> <span class="nv">$CoursePython</span> <span class="n">-B</span> <span class="n">-X</span> <span class="n">utf8</span> <span class="s1">'课程工具/快速验收.py'</span> <span class="n">all</span>
-<span class="k">if</span> <span class="p">(</span><span class="nv">$LASTEXITCODE</span> <span class="o">-ne</span> <span class="n">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">throw</span> <span class="s2">"</span><span class="s2">快速验收失败，退出码 </span><span class="s2">$</span><span class="s2">LASTEXITCODE</span><span class="s2">"</span> <span class="p">}</span></code></pre></div>
-<p>每项检查通过后打印 <code>PASS</code>。生成的 Notebook 和预测文件写入 <code>课程输出/快速验收/</code> 下本次运行目录。<a href="#src-smoke">查看快速验收脚本</a></p>
-<div class="note"><p>正文、源码和图表可以单独离线阅读。运行练习时保留整包中的目录结构。</p></div>
-</section>
 <section aria-labelledby="python-title" class="section" id="python">
 <div class="section-title"><span class="chapter-num">1.1–1.9</span><h2 id="python-title">Python 基础知识</h2></div>
-<p class="lead">先练数据容器、控制流、函数和文件操作，再用 NumPy、Pandas、SciPy、scikit-learn 与 Matplotlib 完成数值和交通数据练习。</p><div class="card teaching" id="teach-python-types">
+<div class="lecture-body">
+<p class="lead">从一条客流记录出发，学习如何表达字段、清理报表、构造数值矩阵，并按任务选择统计与建模工具。</p>
+<article class="card teaching lesson" aria-labelledby="python-records">
+<h3 id="python-records">1.1–1.4　用 Python 表达一条出行记录</h3>
+<p>把一次观测写成 <code>(站名, 时段, 进站人数)</code>，例如 <code>('西直门', '07:45', 12)</code>。元组固定字段次序，字符串保存站名和时间标签，整数保存人数。用列表把记录按时间排起来，用字典把站名映射到人数。读程序时先问两个问题。这个值是一个字段、整条记录，还是一组记录？后续会按时间遍历，还是按站名查找？</p>
+<div class="steps" aria-label="记录处理顺序"><span>读入记录</span><span class="arrow" aria-hidden="true">→</span><span>条件筛选</span><span class="arrow" aria-hidden="true">→</span><span>按站累计</span><span class="arrow" aria-hidden="true">→</span><span>返回汇总</span></div>
+<ul>
+<li><strong>顺序、条件、循环。</strong>先读入记录，再逐条判断时段。每当一条记录满足条件，把人数加到字典中同一站点的现有总数。列表推导式适合先挑出合格记录，按站计数可再走一遍循环。</li>
+<li><strong>函数、类与对象。</strong>函数接收记录和时段，返回站点汇总。需要让多次调用共享站点索引和累计状态时，可将数据和操作放进一个对象，实例方法通过 <code>self</code> 读写该对象的数据。</li>
+<li><strong>文件读写。</strong>普通文本可用 <code>open</code>，同类型数值矩阵可用 NumPy 读取。带站名、列标签或 Excel 工作表的报表适合用 Pandas 读入。读完先核对表头、编码、缺失值和单位。</li>
+</ul>
+<p class="teaching-reference">课件依据 · 张金雷《Python 基础与进阶》第 3–28 页。</p>
+</article>
+<article class="card teaching lesson" aria-labelledby="python-table">
+<h3 id="python-table">1.5–1.6　报表对齐、矩阵轴与时段汇总</h3>
+<p>Series 是带索引的一列数据，DataFrame 可以同时保存站名与客流等不同类型的列。对齐日期或站名以后，可把数值部分转成统一类型的 NumPy 数组。以下矩阵以<strong>行表示车站，列表示时间片</strong>。</p>
+<div class="tablebox" role="region" aria-label="两站两个时间片客流" tabindex="0">
+<table><thead><tr><th scope="col">站点</th><th scope="col">07:45</th><th scope="col">08:00</th><th scope="col">站点合计</th></tr></thead>
+<tbody><tr><th scope="row">西直门</th><td>12</td><td>18</td><td>30</td></tr><tr><th scope="row">东直门</th><td>5</td><td>9</td><td>14</td></tr><tr><th scope="row">时段合计</th><td>17</td><td>27</td><td>44</td></tr></tbody></table>
+</div>
+<p>对左上 2 × 2 数值矩阵，沿 <code>axis=0</code> 求和会消去站点轴，得到各时间片的 <code>[17, 27]</code>。沿 <code>axis=1</code> 则消去时间轴，得到各站点的 <code>[30, 14]</code>。两天报表的车站排列可能不同，先按站名对齐，再沿时间轴拼接。</p>
+<details class="question"><summary>自测 · 第二天的报表把两站行顺序交换了，直接拼接会发生什么？</summary>
+<p>原来属于第二站的数值会落在第一站的行里。用唯一站码或规范站名重建一致的索引，再核对缺站和重复站点。缺测应保留为缺失，只有确认该时段确实无进站时才记为 0。</p></details>
+<p class="teaching-reference">课件依据 · 《Python 基础与进阶》第 30–39 页。表中数值为教学构造。</p>
+</article>
+<article class="card teaching lesson" aria-labelledby="python-tool-choice">
+<h3 id="python-tool-choice">1.7–1.9　从问题选择计算工具和图表</h3>
+<p>SciPy 在 NumPy 数组上提供数值优化、线性代数和统计工具。拟合曲线时先写目标函数或残差，解方程组时把系数与右端项分开，描述数据分布时先区分直方图、概率密度和统计检验要回答的问题。</p>
+<div class="tablebox" role="region" aria-label="机器学习任务和模型举例" tabindex="0">
+<table><thead><tr><th scope="col">问题</th><th scope="col">已知信息</th><th scope="col">课件中的方法</th></tr></thead>
+<tbody>
+<tr><th scope="row">给观测判别类别</th><td>有类别标签</td><td>SVM 用分隔边界及其间隔描述类别差异</td></tr>
+<tr><th scope="row">预测某站下一时段人数</th><td>有连续数值标签</td><td>随机森林回归汇总多棵树的数值预测</td></tr>
+<tr><th scope="row">按流量形态给车站分组</th><td>只有特征</td><td>K-means 交替分配簇并更新中心</td></tr>
+</tbody></table></div>
+<p>用 Matplotlib 画客流曲线时，横轴标时间，纵轴标人数，给预测与真实值分别加图例。散点图适合看预测值与真实值是否贴近对角线，条形图适合比较各站的同一指标。预测实验按时间划分数据，并在训练段学习预处理参数。</p>
+<p class="teaching-reference">课件依据 · 《Python 基础与进阶》第 41–58 页。</p>
+</article>
+</div>
+<details class="card history lab-panel" id="lab-python"><summary>配套实验 · Python 数据处理与可视化</summary>
+<div class="lab-body"><div class="card teaching" id="teach-python-types">
 <h3>从 Python 容器到交通记录</h3>
 <p>用列表保存有顺序的观测，用元组表示一个固定结构的车站和计数，用字典按车站名累计。筛选使用条件分支，逐站累计使用循环，列表推导式适合从已有记录生成新列表。函数把“记录 → 汇总”的契约写在参数与返回值上。需要让多个操作共享数据和状态时，可用类封装，实例方法通过 <code>self</code> 访问当前对象。</p><div class="snippet" data-course-demo=""><div class="snippet-head"><span>Python · 筛选并汇总站点客流</span><button class="copy" data-copy="" type="button">复制</button></div><pre aria-label="Python · 筛选并汇总站点客流" tabindex="0"><code><span class="k">def</span><span class="w"> </span><span class="nf">totals_by_station</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">minimum</span><span class="p">):</span>
     <span class="n">totals</span> <span class="o">=</span> <span class="p">{}</span>
@@ -406,10 +431,36 @@ pre code { white-space: inherit; font-size: .84rem; line-height: 1.55; tab-size:
 </ol>
 </details>
 </div>
+</div>
+</details>
 </section>
 <section aria-labelledby="pytorch-title" class="section" id="pytorch">
-<div class="section-title"><span class="chapter-num">2.1–2.4</span><h2 id="pytorch-title">PyTorch 基础知识</h2></div>
-<p class="lead">从张量的形状、类型和设备出发，把自建时序样本交给 <code>DataLoader</code>，再用 <code>torch.nn</code> 和激活函数完成前向计算。本章使用程序生成的张量与正弦序列。</p><div class="card teaching" id="teach-pytorch-shapes">
+<div class="section-title"><span class="chapter-num">2.1–2.4</span><h2 id="pytorch-title">深度学习基础</h2></div>
+<div class="lecture-body">
+<p class="lead">认清样本、张量轴和目标之间的关系，再沿着一个批次理解网络层、损失和参数更新。</p>
+<article class="card teaching lesson" aria-labelledby="tf-tensors">
+<h3 id="tf-tensors">把样本组织成带轴含义的张量</h3>
+<p>一个标量可以是一站在一个时段的客流。一条站点序列给出长度轴，批量输入再加批次轴。下面三类张量使用相似的数值容器，轴的顺序决定模型怎样读取输入。</p>
+<div class="tablebox" role="region" aria-label="模型输入的概念轴" tabindex="0">
+<table><thead><tr><th scope="col">任务</th><th scope="col">每批数据的轴大小</th><th scope="col">每条样本</th></tr></thead>
+<tbody><tr><th scope="row">时间序列卷积</th><td><code>B × 72 × 1</code></td><td>72 个时间位置，各带一个客流通道</td></tr>
+<tr><th scope="row">手写数字分类</th><td><code>B × 28 × 28 × 1</code></td><td>28 × 28 像素的单通道灰度图</td></tr>
+<tr><th scope="row">路网预测</th><td><code>B × 156 × 10</code></td><td>156 条路分别有 10 个历史速度特征</td></tr></tbody></table>
+</div>
+<p>表中按概念顺序列出轴的大小，传给模型时需按对应接口排列。重塑形状会重新分组元素，转置会交换轴。先对齐输入和标签形成样本，再从样本中组批。对于按时间切分的正弦序列，长度为 <var>L</var> 的一段用前 3 点预测下一点，共有 <code>L − 4 + 1</code> 个窗口。</p>
+<details class="question"><summary>自测 · 长度分别为 8,000 和 2,000 的两段，可以各自构造多少个窗口？</summary>
+<p>分别为 7,997 和 1,997。每个窗口都需要 3 个输入点和 1 个目标点，段间边界按本练习的设定分别处理。</p></details>
+<p class="teaching-reference">课件依据 · 《人工智能在轨道交通刷卡数据的应用综述及实战》第 54–62、65、78–87 页。各框架的张量轴顺序与批处理用法见本章实验。</p>
+</article>
+<article class="card teaching lesson" aria-labelledby="tf-train-loop">
+<h3 id="tf-train-loop">一个批次如何更新模型</h3>
+<div class="steps" aria-label="一个训练批次"><span>取输入与标签</span><span class="arrow" aria-hidden="true">→</span><span>前向计算</span><span class="arrow" aria-hidden="true">→</span><span>计算损失</span><span class="arrow" aria-hidden="true">→</span><span>求梯度</span><span class="arrow" aria-hidden="true">→</span><span>优化器更新</span></div>
+<p>一个 Dense 单元先求输入的加权和，再由激活函数决定输出。Sigmoid 把输出映射到 0 到 1，Tanh 给出有符号的响应，ReLU 将负值置零，Leaky ReLU 在负半轴保留一个小斜率。训练时从前向结果计算损失，再通过自动微分得到损失对各参数的梯度，由优化器更新参数。验证时计算预测和损失，用于比较不同轮次的权重。</p>
+<p class="teaching-reference">课件依据 · 《人工智能基础模型简介实战》第 4–16、20–26、51–56 页。各激活函数与框架接口见本章实验。</p>
+</article>
+</div>
+<details class="card history lab-panel" id="lab-pytorch"><summary>配套实验 · PyTorch 张量、数据集、网络层和激活函数</summary>
+<div class="lab-body"><div class="card teaching" id="teach-pytorch-shapes">
 <h3>跟踪批次、通道和梯度</h3>
 <p>张量带有形状、数据类型和设备。时序模型常用 <code>(批次, 通道, 长度)</code> 表示一维卷积输入，二维卷积多一个空间轴。<code>reshape</code> 重新分组元素，<code>permute</code> 交换轴。计算须使用同一设备，标签类型取决于损失。<code>nn.Module</code> 管理层与可训练参数，<code>loss.backward()</code> 计算梯度，优化器据此更新参数。</p><div class="snippet" data-course-demo=""><div class="snippet-head"><span>PyTorch · 一个批次完成前向、反向与更新</span><button class="copy" data-copy="" type="button">复制</button></div><pre aria-label="PyTorch · 一个批次完成前向、反向与更新" tabindex="0"><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">nn</span>
@@ -477,10 +528,39 @@ pre code { white-space: inherit; font-size: .84rem; line-height: 1.55; tab-size:
 </ol>
 </details>
 </div>
+</div>
+</details>
 </section>
 <section aria-labelledby="bp-title" class="section" id="bp">
 <div class="section-title"><span class="chapter-num">3.1</span><h2 id="bp-title">反向传播</h2></div>
-<p class="lead">用 NumPy 手写二分类的前向计算、损失、梯度和全批量更新。从一条线性判别边界理解反向传播。</p><div class="card teaching" id="teach-bp-chain">
+<div class="lecture-body">
+<p class="lead">从一张小网络手算前向、误差和权重更新，理解链式法则如何把最终损失传回每个参数。</p>
+<article class="card teaching lesson" aria-labelledby="bp-ppt-example">
+<h3 id="bp-ppt-example">课件例题 · 从两个输入算到两个输出</h3>
+<p>输入 <code>x = (0.05, 0.10)</code>，目标 <code>t = (0.03, 0.05)</code>。网络依次有两个输入、两个隐藏单元和两个输出单元。将输入与隐藏层之间的矩阵记为 <var>A</var>，隐藏层与输出层之间的矩阵记为 <var>B</var>。矩阵行表示来自哪一个单元，列表示到达哪一个单元。两层分别共享偏置 <code>c₁ = 0.35</code> 和 <code>c₂ = 0.10</code>。</p>
+<div class="matrix-flow" aria-label="两层网络的权重矩阵">
+<table class="matrix"><caption>输入 → 隐藏层，A</caption><tbody><tr><td>0.10</td><td>0.20</td></tr><tr><td>0.30</td><td>0.40</td></tr></tbody></table>
+<table class="matrix"><caption>隐藏层 → 输出层，B</caption><tbody><tr><td>0.50</td><td>0.60</td></tr><tr><td>0.70</td><td>0.80</td></tr></tbody></table>
+</div>
+<ol>
+<li>先算隐藏层第一个加权和 <code>0.05×0.10 + 0.10×0.30 + 0.35 = 0.385</code>。第二个为 <code>0.400</code>。</li>
+<li>用 <code>σ(z) = 1/(1+e<sup>−z</sup>)</code> 得到隐藏层 <code>h ≈ (0.595078, 0.598688)</code>。再对 <code>hB + c₂</code> 逐项应用 Sigmoid，得到 <code>p ≈ (0.693519, 0.718290)</code>。</li>
+<li>比较两个输出的均方误差 <code>E = [(p₁−t₁)² + (p₂−t₂)²]/2 ≈ 0.443434</code>。接下来追踪每条权重对 <var>E</var> 的影响。</li>
+</ol>
+<p class="teaching-reference">课件依据 · 《人工智能基础模型简介实战》第 4–7 页。计算保留中间精度，展示值按位舍入。</p>
+</article>
+<article class="card teaching lesson" aria-labelledby="bp-gradient-path">
+<h3 id="bp-gradient-path">沿计算路径拆梯度，再沿分支求和</h3>
+<p>以从隐藏层第二个单元连到输出层第二个单元的 <code>B₂₂</code> 为例。损失对预测的导数是 <code>p₂ − t₂</code>，Sigmoid 的局部导数是 <code>p₂(1−p₂)</code>，输出层加权和对这条权重的导数是 <code>h₂</code>。三项相乘得到 <code>∂E/∂B₂₂ ≈ 0.080959</code>。学习率取 0.5，更新后 <code>B₂₂ ≈ 0.759520</code>。</p>
+<p>记输出层误差信号为 <code>δⱼ = (pⱼ−tⱼ)pⱼ(1−pⱼ)</code>。隐藏单元 <var>i</var> 同时影响两个输出，接收的信号为 <code>(Bᵢ₁δ₁+Bᵢ₂δ₂)hᵢ(1−hᵢ)</code>。共享偏置 <code>c₂</code> 同时进入两个输出单元，梯度是 <code>δ₁+δ₂</code>。所有梯度用更新前的权重一起计算。</p>
+<details class="question"><summary>自测 · 同时更新全部参数后，预测和损失是多少？</summary>
+<p>依照课件给定的初值与学习率计算，得到 <code>p ≈ (0.649433, 0.676090)</code>，<code>E ≈ 0.387843</code>。课件第 16 页给出的更新后输出与所列 MSE 代回公式并不一致。此处使用同一组更新前参数求梯度，再重算完整前向。</p>
+</details>
+<p class="teaching-reference">课件依据 · 《人工智能基础模型简介实战》第 8–16 页。后续双月形练习使用二元交叉熵，见第 17–27 页。</p>
+</article>
+</div>
+<details class="card history lab-panel" id="lab-bp"><summary>配套实验 · 梯度校验与双月形分类</summary>
+<div class="lab-body"><div class="card teaching" id="teach-bp-chain">
 <h3>手算一次反向传播</h3>
 <p>沿计算图先记录每层的输入和输出。以两层 Sigmoid 网络为例，<code>z₁ = XW₁ + b₁</code>，<code>h = σ(z₁)</code>，<code>z₂ = hW₂ + b₂</code>，<code>p = σ(z₂)</code>。对教学误差 <code>L = ½ Σ(p − y)²</code>，输出层误差信号为 <code>δ₂ = (p − y) ⊙ p ⊙ (1 − p)</code>，隐层为 <code>δ₁ = (δ₂ W₂ᵀ) ⊙ h ⊙ (1 − h)</code>。其中 <code>⊙</code> 是逐元素乘法。</p>
 <p>输出权重梯度为 <code>hᵀ δ₂</code>，输入权重梯度为 <code>Xᵀ δ₁</code>。共享偏置要把受其影响的误差信号求和。用 <code>θ ← θ − η∇L</code> 更新参数。下面用一个样本比较手算梯度和中心差分。课程 Notebook 采用单层 Sigmoid 与平均二元交叉熵，此时线性输出梯度可直接写成 <code>(p − y) / N</code>。</p><div class="snippet" data-course-demo=""><div class="snippet-head"><span>NumPy · 验证隐层权重梯度</span><button class="copy" data-copy="" type="button">复制</button></div><pre aria-label="NumPy · 验证隐层权重梯度" tabindex="0"><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -529,10 +609,41 @@ pre code { white-space: inherit; font-size: .84rem; line-height: 1.55; tab-size:
 <span class="k">if</span> <span class="p">(</span><span class="nv">$LASTEXITCODE</span> <span class="o">-ne</span> <span class="n">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">throw</span> <span class="s2">"</span><span class="s2">快速验收失败，退出码 </span><span class="s2">$</span><span class="s2">LASTEXITCODE</span><span class="s2">"</span> <span class="p">}</span></code></pre></div>
 <p><strong>验收</strong> 打印 <code>PASS bp</code>，共 800 个测试标签，训练损失有限且末轮低于首轮。</p>
 <p><strong>练习</strong> 先固定一个小批样本和参数，用中心差分验证任意一个权重的梯度。取 <code>ε=10⁻⁵</code>，与解析梯度的差值应小于 <code>10⁻⁵</code>。</p></div>
+</div>
+</details>
 </section>
 <section aria-labelledby="rnn-title" class="section" id="rnn">
 <div class="section-title"><span class="chapter-num">3.2</span><h2 id="rnn-title">循环神经网络</h2></div>
-<p class="lead">用两层 LSTM 和线性回归层预测下一时间片的进站客流。从 <code>LSTM.csv</code> 的 900 个观测构造 895 个重叠窗口。</p><div class="card teaching" id="teach-rnn-gates">
+<div class="lecture-body">
+<p class="lead">把循环沿时间展开，再用 LSTM 的三个门解释序列记忆与单站短时预测。</p>
+<article class="card teaching lesson" aria-labelledby="rnn-timeline">
+<h3 id="rnn-timeline">沿时间展开 RNN，辨认输入与输出</h3>
+<p>每一步用当前输入 <code>xₜ</code> 和上一隐藏状态 <code>hₜ₋₁</code> 计算 <code>hₜ = φ(Uxₜ + Whₜ₋₁ + b)</code>。时刻不同，参与计算的状态不同，各步复用同一组参数。把循环画成序列后，就能追踪某段历史怎样影响后面的输出。</p>
+<figure class="lesson-figure">
+<div class="steps" aria-label="RNN 时间展开"><span><strong>较早一步</strong><br/>xₜ₋₁, hₜ₋₂ → hₜ₋₁</span><span class="arrow" aria-hidden="true">→</span><span><strong>当前一步</strong><br/>xₜ, hₜ₋₁ → hₜ</span><span class="arrow" aria-hidden="true">→</span><span><strong>下一步</strong><br/>xₜ₊₁, hₜ → hₜ₊₁</span></div>
+<figcaption>同一个递推单元反复使用，箭头传递的是隐藏状态。改绘自课件第 29–30 页。</figcaption>
+</figure>
+<div class="tablebox" role="region" aria-label="四种序列输入输出形式" tabindex="0">
+<table><thead><tr><th scope="col">输入 → 输出</th><th scope="col">例子</th></tr></thead><tbody>
+<tr><th scope="row">一对一</th><td>输入一组当前特征，给出一个目标值</td></tr>
+<tr><th scope="row">一对多</th><td>给一个主题，生成一串有先后顺序的内容</td></tr>
+<tr><th scope="row">多对一</th><td>给出一段历史，预测下一时间片的客流</td></tr>
+<tr><th scope="row">多对多</th><td>读取一个序列再生成另一个序列，或每读一帧就输出该帧标签</td></tr>
+</tbody></table></div>
+<p class="teaching-reference">课件依据 · 《人工智能基础模型简介实战》第 28–33 页。</p>
+</article>
+<article class="card teaching lesson" aria-labelledby="rnn-gates">
+<h3 id="rnn-gates">LSTM 的记忆通道和三个门</h3>
+<p>LSTM 给隐藏状态 <code>h</code> 增加一条单元状态 <code>c</code>。忘记门 <code>f</code> 为旧记忆加权，输入门 <code>i</code> 为候选内容 <code>g</code> 加权，再把两项相加。输出门 <code>o</code> 调节这一步向外暴露的状态。门由 Sigmoid 计算，候选用 Tanh，所以候选内容可以增加或减少单元状态。沿单元状态的直接传递路径，连续多个时间步的旧记忆依次乘以对应的忘记门。门值接近 1 时，这条路径保留较多早期信息。</p>
+<p class="equation"><code>cₜ = fₜ ⊙ cₜ₋₁ + iₜ ⊙ gₜ</code><br/><code>hₜ = oₜ ⊙ tanh(cₜ)</code></p>
+<details class="question"><summary>自测 · 旧记忆为 0.8，忘记门 0.75，输入门 0.5，候选 −0.4，输出门 0.8。手算新状态。</summary>
+<p>保留旧记忆 <code>0.75×0.8 = 0.6</code>，写入 <code>0.5×(−0.4) = −0.2</code>，所以 <code>cₜ = 0.4</code>。隐藏输出约为 <code>0.8×tanh(0.4) = 0.304</code>。如果只把输出门调小，这一步的隐藏输出会变小，已经算出的 <code>cₜ</code> 保持 0.4。</p></details>
+<p>在课件的单站案例中，用前五个客流点预测第六个点，然后向前滑一格。若序列为 <code>[12, 15, 18, 22, 26, 31, 29]</code>，前两个目标分别是 31 和 29。滚动一步预测可以使用当时已观测到的真实历史。固定起点预测多步时，未来观测尚未到达，需要输出多个时距或用预测继续向前滚动。</p>
+<p class="teaching-reference">课件依据 · 《人工智能基础模型简介实战》第 34–49 页。门值与客流为教学构造。</p>
+</article>
+</div>
+<details class="card history lab-panel" id="lab-rnn"><summary>配套实验 · 西直门 LSTM 预测与误差</summary>
+<div class="lab-body"><div class="card teaching" id="teach-rnn-gates">
 <h3>把循环状态沿时间展开</h3>
 <p>普通 RNN 用 <code>hₜ = tanh(Wₓxₜ + Wₕhₜ₋₁ + b)</code> 把当前输入和前一步状态合并，权重沿时间共享。只读最后一个输出可做序列分类，每步读出则可做逐步预测。梯度跨多个时间步传播时，持续相乘可能使其变小或放大。</p>
 <p>LSTM 追加状态 <code>cₜ</code>。忘记门 <code>fₜ</code> 决定保留旧状态的比例，输入门 <code>iₜ</code> 调节候选值 <code>gₜ</code> 写入多少，输出门 <code>oₜ</code> 控制暴露给下一层的状态。更新式为 <code>cₜ = fₜ ⊙ cₜ₋₁ + iₜ ⊙ gₜ</code>、<code>hₜ = oₜ ⊙ tanh(cₜ)</code>。门值由 Sigmoid 得到，候选值由 Tanh 得到。</p><div class="snippet" data-course-demo=""><div class="snippet-head"><span>PyTorch · 观察两层 LSTM 的时间轴和状态轴</span><button class="copy" data-copy="" type="button">复制</button></div><pre aria-label="PyTorch · 观察两层 LSTM 的时间轴和状态轴" tabindex="0"><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
@@ -587,10 +698,50 @@ pre code { white-space: inherit; font-size: .84rem; line-height: 1.55; tab-size:
 <span class="k">if</span> <span class="p">(</span><span class="nv">$LASTEXITCODE</span> <span class="o">-ne</span> <span class="n">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">throw</span> <span class="s2">"</span><span class="s2">快速验收失败，退出码 </span><span class="s2">$</span><span class="s2">LASTEXITCODE</span><span class="s2">"</span> <span class="p">}</span></code></pre></div>
 <p><strong>验收</strong> 打印 <code>PASS rnn</code>。只训练一轮并生成 269 条预测，测试输入和输出形状分别为 <code>(269,1,5)</code> 和 <code>(269,1,1)</code>。</p>
 <p><strong>练习</strong> 用原始量纲的预测和标签独立计算 MSE，并验证它约等于归一化 MSE 乘以训练集极差平方。将同一 MSE 开方，应得到 RMSE。</p></div>
+</div>
+</details>
 </section>
 <section aria-labelledby="cnn-title" class="section" id="cnn">
 <div class="section-title"><span class="chapter-num">3.3</span><h2 id="cnn-title">卷积神经网络</h2></div>
-<p class="lead">一个 Notebook 中有两个独立实验。前半使用一维卷积预测进站流量，后半使用二维卷积识别手写数字。</p><div class="card teaching" id="teach-cnn-receptive">
+<div class="lecture-body">
+<p class="lead">用课件里的数字矩阵看卷积核怎样滑动，再把同样的局部计算用于客流序列和图像。</p>
+<article class="card teaching lesson" aria-labelledby="cnn-convolution-board">
+<h3 id="cnn-convolution-board">课件例题 · 滑动卷积核</h3>
+<p>局部连接让一个输出只读取当前窗口。权值共享让同一组系数在每个窗口复用。二维卷积核在行和列方向滑动。以课件的 4 × 4 输入为例，2 × 2 核每次沿相应轴走 2 格，对应元素相乘后求和，不加偏置。</p>
+<figure class="lesson-figure conv-board" id="cnn-worked">
+<div class="matrix-flow">
+<table class="matrix" data-cnn-input><caption>输入，4 × 4</caption><tbody>
+<tr><td class="window-active">2</td><td class="window-active">5</td><td>4</td><td>6</td></tr>
+<tr><td class="window-active">8</td><td class="window-active">3</td><td>9</td><td>14</td></tr>
+<tr><td>1</td><td>4</td><td>7</td><td>10</td></tr>
+<tr><td>9</td><td>5</td><td>11</td><td>3</td></tr></tbody></table>
+<span class="math-operator" aria-hidden="true">⊛</span>
+<table class="matrix" data-cnn-kernel><caption>卷积核，2 × 2</caption><tbody><tr><td>7</td><td>6</td></tr><tr><td>4</td><td>1</td></tr></tbody></table>
+<span class="math-operator" aria-hidden="true">→</span>
+<table class="matrix"><caption>输出，点选格子</caption><tbody>
+<tr><td><button type="button" data-cnn-window="0,0" aria-label="左上输出 79" aria-pressed="true">79</button></td><td><button type="button" data-cnn-window="0,1" aria-label="右上输出 114" aria-pressed="false">114</button></td></tr>
+<tr><td><button type="button" data-cnn-window="1,0" aria-label="左下输出 72" aria-pressed="false">72</button></td><td><button type="button" data-cnn-window="1,1" aria-label="右下输出 156" aria-pressed="false">156</button></td></tr></tbody></table>
+</div>
+<p class="equation" data-cnn-equation aria-live="polite">左上窗口　2 × 7 + 5 × 6 + 8 × 4 + 3 × 1 = 79</p>
+<figcaption>输入、权重和输出来自《人工智能基础模型简介实战》第 52 页。步长 2、填充 0。</figcaption>
+</figure>
+<p>以单个空间轴为例，长度 <var>L</var>、核宽 <var>K</var>、两侧各填 <var>P</var> 个位置、步长 <var>S</var> 时，输出长度为 <code>⌊(L + 2P − K)/S⌋ + 1</code>，这里膨胀率为 1。若把上例步长从 2 改为 1，两轴都有 <code>⌊(4−2)/1⌋+1 = 3</code> 个输出位置。</p>
+<p class="teaching-reference">课件依据 · 《人工智能基础模型简介实战》第 50–54、57–60 页。</p>
+</article>
+<article class="card teaching lesson" aria-labelledby="cnn-pooling">
+<h3 id="cnn-pooling">池化压缩空间，全连接层给出任务输出</h3>
+<p>课件的 2 × 2 池化窗左上一块是 <code>[12, 5; 8, 3]</code>。最大池化取 12，平均池化取 <code>(12+5+8+3)/4 = 7</code>。池化由窗口和步长确定，可以减少后续要处理的空间位置。多通道输入的卷积核要同时取出窗口内各通道的值。卷积核个数决定输出通道数。</p>
+<div class="cards">
+<div class="card"><h4>1D · 西直门进站人数</h4><p>卷积核沿时间轴读取局部变化。前 72 个时段构成一个输入窗口，输出是下一时间片的一个客流值。实验递归预测时继续把预测值放回窗口。</p></div>
+<div class="card"><h4>2D · MNIST 手写数字</h4><p>卷积核沿高和宽读取局部像素。池化将边长从 28 缩到 14、再到 7。展平特征后用全连接层得到 10 个类别分数。</p></div>
+</div>
+<details class="question"><summary>自测 · 3 × 3 卷积核读取 1 个输入通道，输出 32 个通道。有多少可训练参数？</summary>
+<p>若每个输出通道有一个偏置，参数为 <code>(3×3×1+1)×32 = 320</code>。每个卷积核重复使用，所以参数数目不乘输出图的高或宽。</p></details>
+<p class="teaching-reference">课件依据 · 《人工智能基础模型简介实战》第 53–56、61–72 页。</p>
+</article>
+</div>
+<details class="card history lab-panel" id="lab-cnn"><summary>配套实验 · 一维客流卷积与 MNIST</summary>
+<div class="lab-body"><div class="card teaching" id="teach-cnn-receptive">
 <h3>手算卷积、池化和输出形状</h3>
 <p>卷积在局部窗口上重复使用同一组权重。一维卷积沿时间移动，二维卷积同时沿高度和宽度移动。设输入长度为 <code>L</code>、核宽为 <code>K</code>、步长为 <code>S</code>、双侧各补 <code>P</code> 个零，膨胀为 1 时输出长度是 <code>⌊(L + 2P − K) / S⌋ + 1</code>。二维卷积对高度和宽度分别计算。最大池化保留每个窗口中的最大响应。</p><div class="snippet" data-course-demo=""><div class="snippet-head"><span>PyTorch · 验证一维卷积与下采样</span><button class="copy" data-copy="" type="button">复制</button></div><pre aria-label="PyTorch · 验证一维卷积与下采样" tabindex="0"><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">nn</span>
@@ -630,10 +781,36 @@ pre code { white-space: inherit; font-size: .84rem; line-height: 1.55; tab-size:
 <span class="k">if</span> <span class="p">(</span><span class="nv">$LASTEXITCODE</span> <span class="o">-ne</span> <span class="n">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">throw</span> <span class="s2">"</span><span class="s2">快速验收失败，退出码 </span><span class="s2">$</span><span class="s2">LASTEXITCODE</span><span class="s2">"</span> <span class="p">}</span></code></pre></div>
 <p><strong>验收</strong> 打印 <code>PASS cnn</code>。1D 产生 <code>(1,1)</code>，二维模型对一批 64 张 MNIST 图像返回 <code>(64,10)</code>，全程使用本地数据。</p>
 <p><strong>练习</strong> 取同一个训练好的 1D 模型，分别用固定起点递归和每步加入真实历史的方式预测前 3 个测试点。检查两种方式的第一步预测一致，并说明第二步的窗口最后一个值分别来自哪里。</p></div>
+</div>
+</details>
 </section>
 <section aria-labelledby="gcn-title" class="section" id="gcn">
 <div class="section-title"><span class="chapter-num">3.4</span><h2 id="gcn-title">图卷积神经网络</h2></div>
-<p class="lead">三个示例依次演示矩阵传播、合成图节点分类，以及真实道路网络的短时速度回归。</p><div class="card teaching" id="teach-gcn-neighborhood">
+<div class="lecture-body">
+<p class="lead">从邻接矩阵理解节点怎样读取自己的历史和邻居的特征，并应用到深圳路网。</p>
+<article class="card teaching lesson" aria-labelledby="gcn-degree">
+<h3 id="gcn-degree">从规则网格换到道路拓扑</h3>
+<p>把道路或车站当成节点，把连接关系记为边。邻接矩阵 <var>A</var> 为 <code>N × N</code>，节点特征 <var>H</var> 为 <code>N × F</code>。先约定 <code>Aᵢⱼ</code> 在聚合中让第 <var>i</var> 个节点读取第 <var>j</var> 个节点的特征。对称的无向邻接下，行度与列度相同。读有向图时要对照边的方向、矩阵写法和度的定义。</p>
+<p class="equation"><code>Ã = A + I</code><br/><code>S = D̃<sup>−1/2</sup> Ã D̃<sup>−1/2</sup></code><br/><code>H′ = σ(S H W + b)</code></p>
+<ol>
+<li><strong>自环。</strong>在对角线加 1，让每个节点在聚合时也读取自己。</li>
+<li><strong>归一化。</strong>让位置 <code>(i,j)</code> 的连接权重除以 <code>√(dᵢdⱼ)</code>，避免简单求和让邻居多的节点只凭连接数量得到更大幅值。</li>
+<li><strong>特征变换。</strong><code>SH</code> 沿图的节点轴混合邻居信息，<code>W</code> 沿特征轴把 <var>F</var> 维变为所需输出维。堆叠两层，信息可以沿两跳传播。</li>
+</ol>
+<details class="question"><summary>自测 · 三站连成 A—B—C，自环后度是 2、3、2。特征为 6、0、3，B 聚合后是多少？</summary>
+<p>B 读取 A 和 C 的权重都为 <code>1/√6</code>，自己的权重是 <code>1/3</code>。线性聚合值为 <code>6/√6 + 0/3 + 3/√6 = 9/√6 ≈ 3.674</code>，此时尚未乘上 <var>W</var>。</p></details>
+<p><strong>再回到课件的四节点有向图。</strong>按配套 Notebook 的列度约定，加自环后四个度是 <code>(2, 3, 3, 2)</code>。归一化矩阵第 0 行只保留第 0、1 列，权重分别是 <code>1/2</code> 和 <code>1/√6</code>。第 0、1 个节点的两维特征为 <code>(0, 0)</code> 和 <code>(1, −1)</code>，所以第 0 节点先得到 <code>(1, −1)/√6</code>，再用一个 <code>2 × 3</code> 的权重矩阵映射为三维。</p>
+<p class="teaching-reference">课件依据 · 《人工智能基础模型简介实战》第 73–79 页。三站为便于手算的例子，配套实验保留课件四节点有向图。</p>
+</article>
+<article class="card teaching lesson" aria-labelledby="gcn-traffic">
+<h3 id="gcn-traffic">深圳路速 · 把历史时刻变成节点特征</h3>
+<p>课件给出 156 条路、2,976 个速度时刻。邻接矩阵描述路与路的连通关系。每条路历史 10 步拼成节点特征，批量输入为 <code>(B, 156, 10)</code>。用同一张图聚合历史特征，经过两层 GCN 和全连接层，输出 <code>(B, 156, 1)</code> 作为下一时间片的各路段预测速度。</p>
+<p>图节点顺序要和速度矩阵一致。训练段用于拟合缩放参数和更新模型，随后用验证 MSE 选择权重。测试阶段在留出的时刻比较预测与最近一次真实观测。课件按全天 96 个 15 分钟片说明日历日，配套脚本的默认切分保留了 360 个测试时间片。</p>
+<p class="teaching-reference">课件依据 · 《人工智能基础模型简介实战》第 80–92 页。脚本设置见本章实验。</p>
+</article>
+</div>
+<details class="card history lab-panel" id="lab-gcn"><summary>配套实验 · 四节点传播、节点分类与深圳路速</summary>
+<div class="lab-body"><div class="card teaching" id="teach-gcn-neighborhood">
 <h3>从邻接矩阵到邻居聚合</h3>
 <p>道路和地铁站用节点表示，实际连通关系用边表示。特征矩阵的一行对应一个节点，必须与邻接矩阵采用相同节点顺序。加单位矩阵保留自身特征，以邻接矩阵的度做归一化，再混合邻居信息。层的运算为 <code>H′ = ReLU(D̃<sup>−1/2</sup> Ã D̃<sup>−1/2</sup> H W + b)</code>，其中 <code>Ã = A + I</code>。前一项沿节点聚合，权重矩阵在每个节点上变换特征。</p><div class="snippet" data-course-demo=""><div class="snippet-head"><span>NumPy · 手算三节点图的一次传播</span><button class="copy" data-copy="" type="button">复制</button></div><pre aria-label="NumPy · 手算三节点图的一次传播" tabindex="0"><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
@@ -688,12 +865,59 @@ pre code { white-space: inherit; font-size: .84rem; line-height: 1.55; tab-size:
 <span class="k">if</span> <span class="p">(</span><span class="nv">$LASTEXITCODE</span> <span class="o">-ne</span> <span class="n">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">throw</span> <span class="s2">"</span><span class="s2">快速验收失败，退出码 </span><span class="s2">$</span><span class="s2">LASTEXITCODE</span><span class="s2">"</span> <span class="p">}</span></code></pre></div>
 <p><strong>验收</strong> NumPy 示例输出 <code>(4,3)</code>。路速推理输出 <code>PASS gcn</code>，生成 JSON 与 NPZ，预测形状为 <code>(360,156,1)</code>。</p>
 <p><strong>练习</strong> 在四节点示例中逐一修改传播前的自环设置，分别重算度和输出，检查两次输出都为 <code>(4,3)</code> 且数值有所变化。说明哪个矩阵变化导致节点特征自身的权重改变。</p></div>
+</div>
+</details>
 </section>
 <section aria-labelledby="metro-title" class="section" id="metro">
 <div class="section-title"><span class="chapter-num">案例</span><h2 id="metro-title">地铁客流预测</h2></div>
-<p class="lead">用北京地铁的历史客流和线路邻接矩阵，预测下一时间片的全网站点进站量。课程案例包含刷卡记录聚合、双输入预测和仅进站对照。</p><p>整包已附训练数据和<a href="#src-analysis">地铁误差分析脚本</a>。运行本章命令可比较两种输入设置，并查看按站点和时段汇总的误差。</p><div class="note" id="metro-data-source">
+<div class="lecture-body">
+<p class="lead">从进站、OD 和断面等运营问题出发，学习 AFC 数据如何变成时间序列，以及怎样预测全网下一时段进站流。</p>
+<article class="card teaching lesson" aria-labelledby="metro-tasks">
+<h3 id="metro-tasks">运营问题怎样决定预测目标</h3>
+<p>课件从短时客流预测、车站视觉识别和运营优化三个方向介绍轨道交通中的人工智能。短时预测要先指定空间对象与时间粒度。以 15 分钟为单位，三个常见目标回答不同的问题。</p>
+<div class="tablebox" role="region" aria-label="轨道交通预测对象" tabindex="0">
+<table><thead><tr><th scope="col">目标</th><th scope="col">每个数代表什么</th><th scope="col">可用于</th></tr></thead><tbody>
+<tr><th scope="row">进站流</th><td>某站一个时间片的进站人数</td><td>研判闸机和站台的短时到达压力</td></tr>
+<tr><th scope="row">OD 流</th><td>一个时间片内从起点站去往终点站的出行人数</td><td>分析起终点需求与客流分布</td></tr>
+<tr><th scope="row">断面流</th><td>某方向上通过相邻车站间线路断面的人数</td><td>识别重点区段和运能压力</td></tr>
+</tbody></table></div>
+<p>同一对起终点可能有多条可走线路。用 OD 推断经过各断面的人数时，还需要路径分配或区段观测。本章案例预测的是各站下一时间片的进站人数。</p>
+<p class="teaching-reference">课件依据 · 张金雷《人工智能在轨道交通刷卡数据的应用综述及实战》第 3–35、51–52 页。</p>
+</article>
+<article class="card teaching lesson" aria-labelledby="metro-afc">
+<h3 id="metro-afc">自动售检票记录怎样变成矩阵</h3>
+<p>AFC 记录进出站时间和车站编码。先用站码表映射到同一个车站索引，再判断记录能否构成一段有效出行。课件所用的一份数据在出站记录中已包含进站字段，可以从该记录读取完整出行。遇到分别存储两次过闸的表，需先正确配对，再聚合。</p>
+<p>课件按研究时段清理无法匹配站码的记录、时间顺序错误、缺失字段和不合理的出行。跨日、同站进出和过长停留的处理要结合该项目的运营与研究口径。完成清洗后，本案例按 <code>[05:00, 23:00)</code> 划出每日 72 个十五分钟片，25 个工作日共 1,800 个片。输入文件的每一行代表一站，列沿时间排列。</p>
+<div class="steps" aria-label="AFC 数据处理流程"><span>核对记录字段</span><span class="arrow" aria-hidden="true">→</span><span>对齐站码与时间</span><span class="arrow" aria-hidden="true">→</span><span>清洗和分箱</span><span class="arrow" aria-hidden="true">→</span><span>累计进站、出站或 OD</span></div>
+<details class="question"><summary>自测 · 甲站 08:14 进、乙站 08:15 出，这次出行分别计入哪里？</summary>
+<p>进站计入甲站的 <code>[08:00, 08:15)</code>，出站计入乙站的 <code>[08:15, 08:30)</code>。若 OD 以出发归属时间片，这趟出行计入 08:00 开始的 <code>[甲站, 乙站]</code> 单元。沿 OD 的终点轴求和可以得到同一时段的进站人数。</p></details>
+<p class="teaching-reference">课件依据 · 《人工智能在轨道交通刷卡数据的应用综述及实战》第 36–50、54 页。原始 AFC 的字段和处理规则用于教学，包内实验用聚合数据与合成刷卡样例。</p>
+</article>
+<article class="card teaching lesson" aria-labelledby="metro-history">
+<h3 id="metro-history">周、日、近邻窗口怎样进入全网模型</h3>
+<p>用目标索引 <var>t</var> 表示要预测的时间片。本案例每天 72 片，一周按 5 个工作日算 360 片。三个窗口都取右端之前的 10 个已知点，用来提供同周节奏、前一日节奏及最近变化。</p>
+<div class="tablebox" role="region" aria-label="地铁三种历史窗口" tabindex="0">
+<table><thead><tr><th scope="col">模式</th><th scope="col">窗口右端（不含）</th><th scope="col">当 t = 1440 时读入</th></tr></thead>
+<tbody><tr><th scope="row">周模式</th><td>t − 360</td><td>1070–1079</td></tr><tr><th scope="row">日模式</th><td>t − 72</td><td>1358–1367</td></tr><tr><th scope="row">近邻模式</th><td>t</td><td>1430–1439</td></tr></tbody></table>
+</div>
+<figure class="lesson-figure">
+<div class="steps" aria-label="地铁模型数据流"><span>每种历史 <code>B × 276 × 10</code></span><span class="arrow" aria-hidden="true">→</span><span>各做 GCN 并拼接 <code>B × 276 × 30</code></span><span class="arrow" aria-hidden="true">→</span><span>二维卷积、展平与全连接</span><span class="arrow" aria-hidden="true">→</span><span>下一片进站量 <code>B × 276 × 1</code></span></div>
+<figcaption>按课件第 52、63–67 页改绘。课件示意以进站历史为输入，配套实验还提供进站加出站输入，以及仅进站对照。</figcaption>
+</figure>
+<p>第四周的真实值可当作训练标签，也可在预测第五周时作为已知历史。区分的是<strong>当时是否已经观测</strong>与<strong>哪些目标用来拟合模型</strong>。先用验证段决定何时停止和保留哪轮权重，再在测试段还原到人数尺度。</p>
+<p class="teaching-reference">课件依据 · 《人工智能在轨道交通刷卡数据的应用综述及实战》第 51–55、63–72、88–91 页。节点数按数据矩阵和可运行实验核对为 276。</p>
+</article>
+<article class="card teaching lesson" aria-labelledby="metro-errors">
+<h3 id="metro-errors">同一组误差，如何从不同指标解读</h3>
+<p>真实值为 <code>[10, 20]</code> 人，预测为 <code>[12, 16]</code> 人。绝对误差分别为 2 和 4，<strong>MAE</strong> 为 3 人。<strong>RMSE</strong> 先对误差平方求平均再开方，为 <code>√10 ≈ 3.16</code> 人。<strong>WMAPE</strong> 用总绝对误差除以总真实客流，为 <code>6/30 = 20%</code>。存在少量很大的偏差时，RMSE 对它们更敏感。</p>
+<p>配套实验用上一时刻的真实值作基线，帮助判断模型是否改善短时预测。随后按车站、时段和相邻客流变化量比较误差。实现中的 <code>r2_score</code> 输出决定系数 <strong>R²</strong>，其口径与将皮尔逊相关系数平方不同。</p>
+<p class="teaching-reference">课件依据 · 《人工智能在轨道交通刷卡数据的应用综述及实战》第 68–77、90–91 页。误差计算为教学构造。</p>
+</article>
+</div>
+<details class="card history lab-panel" id="lab-metro"><summary>配套实验 · 地铁数据、训练命令与输入对照</summary>
+<div class="lab-body"><p>整包已附训练数据和<a href="#src-analysis">地铁误差分析脚本</a>。运行本章命令可比较两种输入设置，并查看按站点和时段汇总的误差。</p><div class="note" id="metro-data-source">
 <h3>北京地铁客流数据（MetroBJ2016）</h3>
-<p>根据张金雷的课程课件《轨道交通大数据应用实战》第 41、42、54 页，案例取自北京地铁 2016 年 2 月 29 日至 4 月 1 日的 25 个工作日，原始自动售检票（AFC）记录约 1.3 亿条。每天 05:00–23:00，每 15 分钟汇总一次，共 72 个时间片。进站和出站矩阵各为 276 站 × 1,800 时间片，邻接矩阵为 276 × 276。</p>
+<p>根据张金雷的课程课件《人工智能在轨道交通刷卡数据的应用综述及实战》第 41、42、54 页，案例取自北京地铁 2016 年 2 月 29 日至 4 月 1 日的 25 个工作日，原始自动售检票（AFC）记录约 1.3 亿条。每天 05:00–23:00，每 15 分钟汇总一次，共 72 个时间片。进站和出站矩阵各为 276 站 × 1,800 时间片，邻接矩阵为 276 × 276。</p>
 <p>包内的 <code>in_15min.csv</code>、<code>out_15min.csv</code> 和 <code>adjacency.csv</code> 与张金雷等人公开仓库对应文件逐字节一致。两天合成刷卡样例供聚合练习使用。</p>
 <p class="links"><a href="https://github.com/JinleiZhangBJTU/ResNet-LSTM-GCN/tree/78b257bb362d1d0b48bce6fda6250ed67b2e8381">作者数据仓库</a> <a href="https://doi.org/10.1109/TITS.2020.3000761">Zhang 等（2021）论文</a></p>
 </div><div class="card teaching" id="teach-metro-target">
@@ -773,6 +997,61 @@ pre code { white-space: inherit; font-size: .84rem; line-height: 1.55; tab-size:
 <span class="k">if</span> <span class="p">(</span><span class="nv">$LASTEXITCODE</span> <span class="o">-ne</span> <span class="n">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">throw</span> <span class="s2">"</span><span class="s2">快速验收失败，退出码 </span><span class="s2">$</span><span class="s2">LASTEXITCODE</span><span class="s2">"</span> <span class="p">}</span></code></pre></div>
 <p><strong>验收</strong> 打印 <code>PASS metro</code>。生成 <code>metrics.json</code> 和 <code>predictions.npz</code>，记录 <code>inputs=["inflow"]</code>，预测形状为 <code>(360,276,1)</code>。</p>
 <p><strong>练习</strong> 完成双输入预测后，打开其 <code>test/predictions.npz</code>。分别从 <code>predicted</code> 和 <code>last_observation</code> 减去 <code>actual</code>，重算 RMSE 与 MAE。示例运行中，双输入约为 <code>97.87 / 58.42</code>，基线约为 <code>101.02 / 50.67</code>。按相邻客流变化是否达到 250 人分组，解释两个指标的排序。</p></div>
+</div>
+</details>
+</section>
+<section aria-labelledby="course-slides-title" class="section" id="course-slides">
+<div class="section-title"><h2 id="course-slides-title">课程课件与页码</h2></div>
+<p class="lead">正文按张金雷老师的三套课程课件组织。页码从各 PDF 封面起算。课件例题保留题设数字，网页中的图表和自测用于辅助学习。</p>
+<div class="tablebox" role="region" aria-label="课件与教学章节对照" tabindex="0">
+<table><thead><tr><th scope="col">课件</th><th scope="col">阅读位置</th></tr></thead>
+<tbody>
+<tr><th scope="row">《Python 基础与进阶》</th><td><a href="#python">Python 数据处理</a>（第 3–58 页）</td></tr>
+<tr><th scope="row">《人工智能基础模型简介实战》</th><td><a href="#bp">反向传播</a>（第 3–27 页）、<a href="#rnn">RNN 与 LSTM</a>（第 28–49 页）、<a href="#cnn">CNN</a>（第 50–72 页）、<a href="#gcn">GCN</a>（第 73–92 页）</td></tr>
+<tr><th scope="row">《人工智能在轨道交通刷卡数据的应用综述及实战》</th><td><a href="#metro-tasks">运营与预测</a>（第 3–35 页）、<a href="#metro-afc">数据与预处理</a>（第 36–50 页）、<a href="#metro-history">建模与评价</a>（第 51–91 页）</td></tr>
+</tbody></table></div>
+<p class="links"><a href="https://www.icourse163.org/course/NJTU-1471607173">访问中国大学 MOOC 原课程</a></p>
+</section>
+<section aria-labelledby="start-title" class="section" id="start">
+<div class="section-title"><h2 id="start-title">环境与运行入口</h2></div>
+<p class="lead">要执行各章的配套 Notebook 或案例训练，先完整解压课程 ZIP，再在解压后的目录打开 PowerShell。</p>
+<div class="cards">
+<article class="card"><h3>已有环境</h3><p>先激活想用的 Python 或 Conda 环境，再检查全部核心包和 CPU 卷积。看到 <code>PASS env</code> 后即可运行课程；第一行同时打印解释器路径。</p></article>
+<article class="card"><h3>新机器 · Windows x64</h3><p>先装 Python 3.14，确认 <code>py -3.14 -V</code> 可运行。新建隔离环境，安装固定版本的依赖和匹配的 CPU 版 PyTorch 与 torchvision。安装需要联网。</p></article>
+</div>
+<div class="note">
+<p>整包解压后，源码、课程工具和输入数据已放在对应目录。Windows 可运行 <code>课程初始化.ps1</code> 准备 CPU 环境，或下载 <button class="button" data-download="requirements" type="button">课程依赖清单</button> 手动配置。用 <a href="#data">数据与产物索引</a> 查找输入文件。</p>
+<p>各章的 Python、NumPy 或 PyTorch 演示可复制到新 Notebook 单元格执行。代码开头会标明需要的数据文件和运行目录。</p></div>
+<div class="stack">
+<div class="snippet"><div class="snippet-head"><span>PowerShell · 已有环境</span><button class="copy" data-copy="" type="button">复制</button></div><pre aria-label="PowerShell · 已有环境" tabindex="0"><code><span class="nv">$CoursePython</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-Command</span> <span class="n">python</span> <span class="n">-CommandType</span> <span class="n">Application</span> <span class="n">-ErrorAction</span> <span class="n">Stop</span><span class="p">)</span><span class="p">.</span><span class="n">Source</span>
+<span class="p">&amp;</span> <span class="nv">$CoursePython</span> <span class="n">-B</span> <span class="n">-X</span> <span class="n">utf8</span> <span class="s1">'课程工具/快速验收.py'</span> <span class="n">env</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$LASTEXITCODE</span> <span class="o">-ne</span> <span class="n">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">throw</span> <span class="s2">"</span><span class="s2">环境检查失败，退出码 </span><span class="s2">$</span><span class="s2">LASTEXITCODE</span><span class="s2">"</span> <span class="p">}</span></code></pre></div>
+<div class="card history"><details><summary>新机器安装命令</summary>
+<div class="snippet"><div class="snippet-head"><span>PowerShell · 新环境 CPU 安装</span><button class="copy" data-copy="" type="button">复制</button></div><pre aria-label="PowerShell · 新环境 CPU 安装" tabindex="0"><code><span class="n">powershell</span><span class="p">.</span><span class="n">exe</span> <span class="n">-NoProfile</span> <span class="n">-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="o">-File</span> <span class="p">.\</span><span class="n">课程初始化</span><span class="p">.</span><span class="n">ps1</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$LASTEXITCODE</span> <span class="o">-ne</span> <span class="n">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">throw</span> <span class="s1">'课程初始化失败'</span> <span class="p">}</span>
+<span class="nv">$CoursePython</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Resolve-Path</span> <span class="n">-LiteralPath</span> <span class="s1">'.venv/Scripts/python.exe'</span><span class="p">).</span><span class="n">Path</span></code></pre></div>
+<p>在 JupyterLab 的 <strong>Kernel → Change Kernel</strong> 中选择 <strong>Python (Traffic AI)</strong>。已有环境直接用该解释器启动 JupyterLab，再选择指向同一解释器的内核。可在首格运行 <code>import sys; print(sys.executable)</code> 核对路径。</p>
+<p>使用 NVIDIA GPU 时，可在独立环境中把 PyTorch 下载索引换成与本机驱动匹配的官方 CUDA 索引。TensorBoard 和 Plotly 分别用于 <code>--tensorboard</code> 和 <code>--plot</code>，属于可选依赖。</p>
+<div class="links"> <a href="https://docs.python.org/3/library/venv.html">Python 虚拟环境</a> <a href="https://pytorch.org/get-started/previous-versions/">PyTorch CPU／CUDA 安装来源</a> <a href="https://ipython.readthedocs.io/en/stable/install/kernel_install.html">Jupyter 内核注册</a></div>
+</details></div>
+</div>
+<h3>Notebook 的确切工作目录</h3>
+<p>在下方找到要运行的 Notebook 文件路径。打开课程目录中的 PowerShell，把示例中的路径换成对应条目。启动 JupyterLab 后选择 <strong>Restart Kernel and Run All Cells</strong>。示例环境使用 Python 3.14.4。</p>
+<div class="snippet"><div class="snippet-head"><span>PowerShell · 在选定 notebook 的父目录启动 JupyterLab</span><button class="copy" data-copy="" type="button">复制</button></div><pre aria-label="PowerShell · 在选定 notebook 的父目录启动 JupyterLab" tabindex="0"><code><span class="nv">$notebook</span> <span class="p">=</span> <span class="s1">'解压代码/Python基础知识代码/Python代码/Python1.3-1.4/Python1.3-1.4.ipynb'</span>
+<span class="nb">Push-Location</span> <span class="n">-LiteralPath</span> <span class="p">(</span><span class="nb">Split-Path</span> <span class="n">-Parent</span> <span class="nv">$notebook</span><span class="p">)</span> <span class="n">-ErrorAction</span> <span class="n">Stop</span>
+<span class="k">try</span> <span class="p">{</span>
+    <span class="p">&amp;</span> <span class="nv">$CoursePython</span> <span class="n">-m</span> <span class="n">jupyterlab</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$LASTEXITCODE</span> <span class="o">-ne</span> <span class="n">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">throw</span> <span class="s2">"</span><span class="s2">JupyterLab 启动失败，退出码 </span><span class="s2">$</span><span class="s2">LASTEXITCODE</span><span class="s2">"</span> <span class="p">}</span>
+<span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+    <span class="nb">Pop-Location</span>
+<span class="p">}</span></code></pre></div>
+<div class="card history"><details><summary>展开所有 Notebook 的路径</summary><div aria-label="Notebook 工作目录" class="tablebox" role="region" tabindex="0"><table><thead><tr><th>Notebook</th><th>课程根目录下的文件路径</th></tr></thead><tbody><tr><th scope="row">Python 1.1–1.2 · 数据类型与语句</th><td class="path"><code>解压代码/Python基础知识代码/Python代码/Python1.1-1.2.ipynb</code><br/><a href="#src-py-control">查看和下载代码</a></td></tr><tr><th scope="row">Python 1.3–1.4 · 函数、类与文件读写</th><td class="path"><code>解压代码/Python基础知识代码/Python代码/Python1.3-1.4/Python1.3-1.4.ipynb</code><br/><a href="#src-py-io">查看和下载代码</a></td></tr><tr><th scope="row">Python 1.5 · NumPy</th><td class="path"><code>解压代码/Python基础知识代码/Python代码/Python1.5-Numpy.ipynb</code><br/><a href="#src-py-numpy">查看和下载代码</a></td></tr><tr><th scope="row">Python 1.6 · Pandas</th><td class="path"><code>解压代码/Python基础知识代码/Python代码/Python1.6-Pandas/Pandas.ipynb</code><br/><a href="#src-py-pandas">查看和下载代码</a></td></tr><tr><th scope="row">Python 1.7 · SciPy</th><td class="path"><code>解压代码/Python基础知识代码/Python代码/Python1.7-SciPy.ipynb</code><br/><a href="#src-py-scipy">查看和下载代码</a></td></tr><tr><th scope="row">Python 1.8–1.9 · scikit-learn 与 Matplotlib</th><td class="path"><code>解压代码/Python基础知识代码/Python代码/python1.8-1.9/1.8-1.9.ipynb</code><br/><a href="#src-py-ml">查看和下载代码</a></td></tr><tr><th scope="row">PyTorch 2.1 · 张量</th><td class="path"><code>解压代码/PyTorch基础知识代码/PyTorch代码/Pytorch2.1张量介绍.ipynb</code><br/><a href="#src-torch-tensor">查看和下载代码</a></td></tr><tr><th scope="row">PyTorch 2.2 · Dataset 与 DataLoader</th><td class="path"><code>解压代码/PyTorch基础知识代码/PyTorch代码/pytorch2.2数据模块.ipynb</code><br/><a href="#src-torch-data">查看和下载代码</a></td></tr><tr><th scope="row">PyTorch 2.3 · 网络模块</th><td class="path"><code>解压代码/PyTorch基础知识代码/PyTorch代码/Pytorch2.3模型介绍.ipynb</code><br/><a href="#src-torch-model">查看和下载代码</a></td></tr><tr><th scope="row">PyTorch 2.4 · 激活函数</th><td class="path"><code>解压代码/PyTorch基础知识代码/PyTorch代码/pytorch2.4激活函数.ipynb</code><br/><a href="#src-torch-activation">查看和下载代码</a></td></tr><tr><th scope="row">反向传播算法</th><td class="path"><code>解压代码/人工智能基础1--反向传播算法代码/人工智能基础3.1反向传播算法.ipynb</code><br/><a href="#src-bp">查看和下载代码</a></td></tr><tr><th scope="row">练习 · 对数几率回归</th><td class="path"><code>解压代码/人工智能基础1--反向传播算法代码/对数几率回归练习.ipynb</code><br/><a href="#src-exercise">查看和下载代码</a></td></tr><tr><th scope="row">循环神经网络 LSTM</th><td class="path"><code>解压代码/人工智能基础2--循环神经网络代码/人工智能基础3.2循环神经网络.ipynb</code><br/><a href="#src-rnn">查看和下载代码</a></td></tr><tr><th scope="row">卷积神经网络 CNN</th><td class="path"><code>解压代码/人工智能基础3--卷积神经网络代码/人工智能基础3.3+卷积神经网络/CNN/CNN.ipynb</code><br/><a href="#src-cnn">查看和下载代码</a></td></tr><tr><th scope="row">NumPy 图卷积</th><td class="path"><code>解压代码/人工智能基础4--图卷积神经网络代码/人工智能基础3.4-图卷积神经网络.ipynb</code><br/><a href="#src-toy">查看和下载代码</a></td></tr></tbody></table></div></details></div>
+<h3 style="margin-top:1.25rem">先做一次快速验收</h3>
+<p>各章的快速验收在 CPU 上执行必要单元格或小批次。路速和地铁各用一轮训练生成权重，再检查预测输出。快速验收用于检查流程、数据和张量形状；完整训练的配置与示例结果见各章。</p>
+<div class="snippet"><div class="snippet-head"><span>PowerShell · 运行全部快速检查</span><button class="copy" data-copy="" type="button">复制</button></div><pre aria-label="PowerShell · 运行全部快速检查" tabindex="0"><code><span class="p">&amp;</span> <span class="nv">$CoursePython</span> <span class="n">-B</span> <span class="n">-X</span> <span class="n">utf8</span> <span class="s1">'课程工具/快速验收.py'</span> <span class="n">all</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$LASTEXITCODE</span> <span class="o">-ne</span> <span class="n">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">throw</span> <span class="s2">"</span><span class="s2">快速验收失败，退出码 </span><span class="s2">$</span><span class="s2">LASTEXITCODE</span><span class="s2">"</span> <span class="p">}</span></code></pre></div>
+<p>每项检查通过后打印 <code>PASS</code>。生成的 Notebook 和预测文件写入 <code>课程输出/快速验收/</code> 下本次运行目录。<a href="#src-smoke">查看快速验收脚本</a></p>
+<div class="note"><p>正文、源码和图表可以单独离线阅读。运行练习时保留整包中的目录结构。</p></div>
 </section>
 <section aria-labelledby="evaluation-title" class="section" id="evaluation">
 <div class="section-title"><h2 id="evaluation-title">指标与故障排查</h2></div>
@@ -5217,23 +5496,23 @@ window.addEventListener('scroll', () => {
 
 function revealSource() {
   const id = location.hash.slice(1);
-  if (!id.startsWith('src-')) return;
   const target = document.getElementById(id);
   if (!target) return;
   const item = target.closest('.source-item');
-  if (!item) return;
-  if (item.hidden) {
+  if (item && item.hidden) {
     group = 'all';
     search.value = '';
     applyFilter();
   }
-  item.open = true;
-  requestAnimationFrame(() => target.scrollIntoView());
+  if (item) item.open = true;
+  const lab = target.closest('.lab-panel');
+  if (lab) lab.open = true;
+  if (item || lab) requestAnimationFrame(() => target.scrollIntoView());
 }
 
 window.addEventListener('hashchange', revealSource);
 document.addEventListener('click', event => {
-  const link = event.target.closest('a[href^="#src-"]');
+  const link = event.target.closest('a[href^="#"]');
   if (link && location.hash === link.hash) revealSource();
 });
 
@@ -5271,6 +5550,23 @@ document.addEventListener('click', async event => {
   clearTimeout(button.resetLabel);
   button.resetLabel = setTimeout(() => { button.textContent = '复制'; }, 1800);
 });
+
+const board = document.getElementById('cnn-worked');
+const inputRows = Array.from(board.querySelectorAll('[data-cnn-input] tr'), row => Array.from(row.cells));
+const kernel = Array.from(board.querySelectorAll('[data-cnn-kernel] td'), cell => Number(cell.textContent));
+const windowButtons = Array.from(board.querySelectorAll('[data-cnn-window]'));
+const equation = board.querySelector('[data-cnn-equation]');
+windowButtons.forEach(button => button.addEventListener('click', () => {
+  const [row, column] = button.dataset.cnnWindow.split(',').map(Number);
+  const selected = inputRows.slice(row * 2, row * 2 + 2).flatMap(values => values.slice(column * 2, column * 2 + 2));
+  const values = selected.map(cell => Number(cell.textContent));
+  inputRows.flat().forEach(cell => cell.classList.toggle('window-active', selected.includes(cell)));
+  windowButtons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+  const terms = values.map((value, index) => value + ' × ' + kernel[index]);
+  const result = values.reduce((total, value, index) => total + value * kernel[index], 0);
+  const label = (column === 0 ? '左' : '右') + (row === 0 ? '上' : '下');
+  equation.textContent = label + '窗口　' + terms.join(' + ') + ' = ' + result;
+}));
 
 applyFilter();
 markSection();
@@ -5318,7 +5614,7 @@ function toCourseNotebook(item) {
     source:'# ' + title + '\n\n可在课程手册中按原单元格编号查看说明。'
   });
   return JSON.stringify({
-    cells, metadata:{kernelspec:{display_name:'Python 3', language:'python', name:'python3'}},
+    cells, metadata:{kernelspec:{display_name:'Python (Traffic AI)', language:'python', name:'traffic-ai'}},
     nbformat:4, nbformat_minor:5
   }, null, 2) + '\n';
 }

@@ -1,0 +1,61 @@
+{
+ "framework": "PyTorch",
+ "station": "西直门",
+ "station_index_zero_based": 34,
+ "selection": "留出周第一个运营日，西直门全部 72 个时间片，按目标索引顺序",
+ "target_range_inclusive": [
+  1440,
+  1511
+ ],
+ "unit": "人",
+ "excerpt_elements": 72,
+ "full_elements": 99360,
+ "fields": {
+  "previous": "上一真实观测",
+  "dual": "进站与出站输入",
+  "inflow_only": "仅进站输入"
+ },
+ "training": {
+  "seed": 42,
+  "max_epochs": 12,
+  "batch_size": 32,
+  "learning_rate": 0.001,
+  "selection": "验证 MSE 最低的轮次"
+ },
+ "saved_runs": {
+  "dual": {
+   "checkpoint_epoch": 8,
+   "full_metrics": {
+    "mae": 58.423050126651475,
+    "rmse": 97.86920249410251
+   },
+   "predictions_npz_sha256": "9706977a069eff2c66f47e55be30de70e41a46839fdac797c14ce1ef81654933"
+  },
+  "inflow_only": {
+   "checkpoint_epoch": 11,
+   "full_metrics": {
+    "mae": 50.47912542528144,
+    "rmse": 83.33660082687413
+   },
+   "predictions_npz_sha256": "d2e06b6bd892b658d15c37cf7300a15d4872ce21f38ed992233aaf6bcf1504aa"
+  }
+ },
+ "full_baseline": {
+  "mae": 50.66965579710145,
+  "rmse": 101.02379699047938
+ },
+ "excerpt_metrics": {
+  "previous": {
+   "mae": 146.36111111111111,
+   "rmse": 226.50496683295933
+  },
+  "dual": {
+   "mae": 124.43026161690553,
+   "rmse": 195.39330084020384
+  },
+  "inflow_only": {
+   "mae": 106.71196224292119,
+   "rmse": 157.59192541857016
+  }
+ }
+}
